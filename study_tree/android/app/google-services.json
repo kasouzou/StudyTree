@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "939586059696",
+    "project_id": "studytree-c9ad8",
+    "storage_bucket": "studytree-c9ad8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939586059696:android:42bfaacfdf70f9f5196a75",
+        "android_client_info": {
+          "package_name": "com.example.study_tree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs8vLUoMbMEWhEhgdDppolqoo7g9gjHQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
