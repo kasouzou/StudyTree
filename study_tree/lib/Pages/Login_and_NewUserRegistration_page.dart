@@ -71,7 +71,7 @@ class Login_and_NewUserRegistration_page extends StatelessWidget {
               text: 'ログイン',
               onPressed: () {
                 // ログインロジックを後で追加
-                // onLoginPressed();
+                Navigation_service().navigateToProject_page(context);
               },
             ),
             const SizedBox(height: 24),

@@ -55,7 +55,7 @@ class NewUserResistration extends StatelessWidget {
               text: '登録',
               onPressed: () {
                 // 新規ユーザー登録のロジックを後で追加
-                // firebase_auth.createUserWithEmailAndPassword(...)
+                Navigation_service().navigateToProject_page(context);
               },
             ),
             const SizedBox(height: 24),
