@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-// メインのプロジェクト画面
-class Project_page extends StatelessWidget {
-  const Project_page({super.key});
+// コミット＆ブランチ一覧
+class Commit_BranchListPage extends StatelessWidget {
+  const Commit_BranchListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +13,12 @@ class Project_page extends StatelessWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // ここにNavigator.pop()などのロジックを追加
+            // ProjectListPag.dart(プロジェクト一覧画面に戻る)
             Navigator.pop(context);
           },
         ),
         title: const Text(
-          'あなたのプロジェクト',
+          'コミットとブランチ一覧',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,

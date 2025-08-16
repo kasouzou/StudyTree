@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
 import '../ReuseableWidget/CustomInputField.dart';
 import '../ReuseableWidget/PrimaryButton.dart';
-import '../Services/Navigation_service.dart';
+import '../Services/NavigationService.dart';
 
-class Login_and_NewUserRegistration_page extends StatelessWidget {
-  // 後でコントローラやロジックを渡せるように、コンストラクタに追加
-  // final void Function() onLoginPressed;
-  // const LoginAndSignupView({
-  //   super.key,
-  //   required this.onLoginPressed,
-  //   required this.onSignupPressed,
-  // });
-
-  const Login_and_NewUserRegistration_page({super.key});
+// ユーザー新規登録画面
+class NewUserResistration extends StatelessWidget {
+  const NewUserResistration({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ログイン'),
+        title: const Text('登録'),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
@@ -29,15 +22,21 @@ class Login_and_NewUserRegistration_page extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const SizedBox(height: 48),
-            // "おかえりなさい" テキスト
+            // "Create your account" テキスト
             Text(
-              'おかえりなさい',
+              '新規ユーザー登録',
               style: Theme.of(
                 context,
               ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32),
+            // ユーザー名入力フィールド
+            const CustomInputField(
+              hintText: 'ユーザーネーム',
+              icon: Icons.person_outline,
+            ),
+            const SizedBox(height: 16),
             // メールアドレス入力フィールド
             const CustomInputField(
               hintText: 'メールアドレス',
@@ -51,43 +50,28 @@ class Login_and_NewUserRegistration_page extends StatelessWidget {
               icon: Icons.lock_outline,
               obscureText: true,
             ),
-            const SizedBox(height: 8),
-            // パスワードを忘れた場合のテキスト
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () {
-                  // パスワードリセットのロジックを後で追加
-                },
-                child: const Text(
-                  'パスワードを忘れた場合はこちら',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ),
-            ),
             const SizedBox(height: 32),
-            // ログインボタン
+            // 登録ボタン
             PrimaryButton(
-              text: 'ログイン',
+              text: '登録',
               onPressed: () {
-                // ログインロジックを後で追加
-                Navigation_service().navigateToProject_page(context);
+                // 新規ユーザー登録のロジックを後で追加
+                NavigationService().navigateToProjectListPage(context);
               },
             ),
             const SizedBox(height: 24),
-            // 新規ユーザー登録ボタン
+            // ログインリンク
             OutlinedButton(
               onPressed: () {
-                // 新規登録画面への遷移ロジックを後で追加
-                Navigation_service().navigateToNewUserRegisterRegistration_page(
+                // ログイン画面への遷移ロジックを後で追加
+                NavigationService().navigateToLogin_and_NewUserRegistrationPage(
                   context,
                 );
+                // 前の画面（ログイン画面）に戻る
               },
-              style: OutlinedButton.styleFrom(
-                side: BorderSide.none, // アウトラインを非表示に
-              ),
+              style: OutlinedButton.styleFrom(side: BorderSide.none),
               child: const Text(
-                '新規ユーザー登録',
+                'すでにアカウントをお持ちならこちらからログインできます。',
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
