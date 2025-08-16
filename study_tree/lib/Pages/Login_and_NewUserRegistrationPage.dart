@@ -4,7 +4,7 @@ import '../ReuseableWidget/PrimaryButton.dart';
 import '../Services/NavigationService.dart';
 
 // ログインまたはユーザー新規登録画面への遷移リンクが入ったページ
-class Login_and_NewUserRegistration_page extends StatelessWidget {
+class Login_and_NewUserRegistrationPage extends StatelessWidget {
   // 後でコントローラやロジックを渡せるように、コンストラクタに追加
   // final void Function() onLoginPressed;
   // const LoginAndSignupView({
@@ -13,7 +13,7 @@ class Login_and_NewUserRegistration_page extends StatelessWidget {
   //   required this.onSignupPressed,
   // });
 
-  const Login_and_NewUserRegistration_page({super.key});
+  const Login_and_NewUserRegistrationPage({super.key});
 
   @override
   Widget build(BuildContext context) {

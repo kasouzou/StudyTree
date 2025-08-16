@@ -22,6 +22,30 @@ class _NewProjectScreenState extends State<CreateNewProjectPage> {
     super.dispose();
   }
 
+  // 警告ダイアログを表示するメソッド
+  Future<bool> _showDiscardDialog() async {
+    return await showDialog<bool>(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('編集を破棄しますか？'),
+              content: const Text('入力した内容は保存されません。'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(false),
+                  child: const Text('いいえ'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(true),
+                  child: const Text('はい'),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +53,12 @@ class _NewProjectScreenState extends State<CreateNewProjectPage> {
         // 戻るボタン
         leading: IconButton(
           icon: const Icon(Icons.close, color: Colors.black),
-          onPressed: () {
-            // ここに画面を閉じるロジック（Navigator.pop）を追加
-            // プロジェクト一覧(ProjectListPage.dart)に戻る。
-            Navigator.pop(context);
+          onPressed: () async {
+            // ダイアログを表示し、ユーザーの選択に応じて画面を戻る
+            final shouldDiscard = await _showDiscardDialog();
+            if (shouldDiscard) {
+              Navigator.pop(context);
+            }
           },
         ),
         title: const Text(
@@ -69,6 +95,7 @@ class _NewProjectScreenState extends State<CreateNewProjectPage> {
                 expands: true,
                 textAlignVertical: TextAlignVertical.top,
                 decoration: InputDecoration(
+                  hintText: 'プロジェクトの説明を書いてください。(書く書かないは自由です。)',
                   filled: true,
                   fillColor: Colors.grey[200],
                   border: OutlineInputBorder(
@@ -85,11 +112,12 @@ class _NewProjectScreenState extends State<CreateNewProjectPage> {
               children: [
                 // キャンセルボタン
                 OutlinedButton(
-                  onPressed: () {
-                    // ここにキャンセルロジック（Navigator.pop）を追加とある
-                    // が、キャンセルダイアログ出してから
-                    // プロジェクト一覧(ProjectListPage.dart)
-                    // に戻った方がいいかも。
+                  onPressed: () async {
+                    // ここにキャンセルロジック（Navigator.pop）を追加
+                    final shouldDiscard = await _showDiscardDialog();
+                    if (shouldDiscard) {
+                      Navigator.pop(context);
+                    }
                   },
                   style: OutlinedButton.styleFrom(
                     foregroundColor: Colors.black,
@@ -102,7 +130,7 @@ class _NewProjectScreenState extends State<CreateNewProjectPage> {
                       vertical: 12,
                     ),
                   ),
-                  child: const Text('Cancel'),
+                  child: const Text('キャンセル'),
                 ),
                 const SizedBox(width: 16),
                 // 作成ボタン
@@ -115,6 +143,8 @@ class _NewProjectScreenState extends State<CreateNewProjectPage> {
                     // TODO: プロジェクト名と説明をデータベースなどに保存するロジック
                     print('Project Name: $projectName');
                     print('Project Description: $projectDescription');
+
+                    Navigator.pop(context);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
@@ -127,7 +157,7 @@ class _NewProjectScreenState extends State<CreateNewProjectPage> {
                     ),
                   ),
                   child: const Text(
-                    'Create',
+                    '作成',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

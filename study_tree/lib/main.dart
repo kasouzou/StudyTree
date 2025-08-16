@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:study_tree/Pages/SplashScreenPage.dart';
 import 'firebase_options.dart';
-import 'Pages/Login_and_NewUserRegistrationPage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Study Tree App',
-      home: Login_and_NewUserRegistration_page(),
+      home: SplashScreenPage(),
       debugShowCheckedModeBanner: false,
     );
   }

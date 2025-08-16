@@ -42,6 +42,7 @@ class ProjectListPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // ここに新規プロジェクト作成画面への遷移ロジックを追加
+                NavigationService().navigateToCreateNewProjectPage(context);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
